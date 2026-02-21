@@ -4,9 +4,9 @@ const app = express();
 
 app.use(express.json());
 
-const testRoutes = require('./routes/testRoutes');
+const authRoutes = require('./routes/authRoutes');
 
-app.use('/api/test', testRoutes);
+app.use('/api/auth', authRoutes);
 
 
 app.get('/', (req, res) => {
