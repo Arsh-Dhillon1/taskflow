@@ -21,4 +21,8 @@ const projectRoutes = require('./routes/projectRoutes');
 
 app.use('/api/projects', projectRoutes);
 
+const taskRoutes = require('./routes/taskRoutes');
+
+app.use('/api/tasks', taskRoutes);
+
 module.exports = app;
