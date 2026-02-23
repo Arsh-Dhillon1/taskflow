@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import toast from 'react-hot-toast';
 
 function Dashboard() {
   const [projects, setProjects] = useState([]);
   const [name, setName] = useState('');
+  const navigate = useNavigate();
 
   const fetchProjects = async () => {
     try {
@@ -22,6 +24,11 @@ function Dashboard() {
   const handleCreate = async (e) => {
     e.preventDefault();
 
+    if (!name.trim()) {
+      toast.error('Project name is required');
+      return;
+    }
+
     try {
       await api.post('/projects', { name });
       setName('');
@@ -36,6 +43,7 @@ function Dashboard() {
     <div>
       <h2>Dashboard</h2>
 
+      {/* Create Project Form */}
       <form onSubmit={handleCreate}>
         <input
           placeholder="Project Name"
@@ -45,9 +53,18 @@ function Dashboard() {
         <button type="submit">Create Project</button>
       </form>
 
+      <hr />
+
+      {/* Project List */}
       <ul>
         {projects.map((project) => (
-          <li key={project._id}>{project.name}</li>
+          <li
+            key={project._id}
+            onClick={() => navigate(`/projects/${project._id}`)}
+            style={{ cursor: 'pointer' }}
+          >
+            {project.name}
+          </li>
         ))}
       </ul>
     </div>
