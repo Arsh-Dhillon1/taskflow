@@ -1,3 +1,4 @@
+// Handles user authentication using JWT strategy
 const authService = require('../services/authService');
 const login = async (req, res) => {
   try {
