@@ -77,12 +77,12 @@ The backend follows MVC with a service layer:
 
 ### Backend
 ```bash
-cd taskflow_backend
+cd Worktrack_backend
 npm install
 npm run dev
 
 ### Frontend
 ```bash
-cd taskflow-frontend
+cd Worktrack-frontend
 npm install
 npm run dev
