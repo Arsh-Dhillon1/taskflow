@@ -6,13 +6,9 @@ const mongoSanitize = require('mongo-sanitize');
 
 const app = express();
 
-app.use(
-  cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
+const cors = require('cors');
+
+app.use(cors());
 
 app.use(helmet());
 app.use(express.json());
