@@ -13,7 +13,15 @@ const getUserProjects = async (userId) => {
   return await Project.find({ owner: userId });
 };
 
+const deleteProject = async (projectId, userId) => {
+  return await Project.findOneAndDelete({
+    _id: projectId,
+    owner: userId
+  });
+};
+
 module.exports = {
   createProject,
-  getUserProjects
+  getUserProjects,
+  deleteProject
 };

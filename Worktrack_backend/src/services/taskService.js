@@ -32,9 +32,17 @@ const getSingleTask = async (taskId, userId) => {
   });
 };
 
+const deleteTask = async (taskId, userId) => {
+  return await Task.findOneAndDelete({
+    _id: taskId,
+    owner: userId
+  });
+};
+
 module.exports = {
   createTask,
   getProjectTasks,
   updateTask,
-  getSingleTask
+  getSingleTask,
+  deleteTask
 };

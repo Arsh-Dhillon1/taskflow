@@ -50,10 +50,19 @@ function ProjectDetails() {
       await api.put(`/tasks/${taskId}`, {
         status: 'done'
       });
-
       fetchTasks();
     } catch {
       toast.error('Error updating task');
+    }
+  };
+
+  const handleDeleteTask = async (taskId) => {
+    try {
+      await api.delete(`/tasks/${taskId}`);
+      toast.success('Task deleted');
+      fetchTasks();
+    } catch {
+      toast.error('Error deleting task');
     }
   };
 
@@ -129,6 +138,13 @@ function ProjectDetails() {
                       Mark Done
                     </button>
                   )}
+
+                  <button
+                    onClick={() => handleDeleteTask(task._id)}
+                    className="px-4 py-1 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             ))

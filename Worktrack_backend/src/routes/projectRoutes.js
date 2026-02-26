@@ -23,4 +23,10 @@ router.get(
   projectController.getProjects
 );
 
+router.delete(
+  '/:projectId',
+  protect,
+  projectController.deleteProject
+);
+
 module.exports = router;

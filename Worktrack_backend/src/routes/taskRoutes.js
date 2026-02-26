@@ -28,6 +28,11 @@ router.get(
   taskController.getSingleTask
 );
 
+router.delete(
+  '/:taskId',
+  protect,
+  taskController.deleteTask
+);
 // Get Tasks by Project
 
 router.get(

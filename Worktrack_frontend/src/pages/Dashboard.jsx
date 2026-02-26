@@ -1,4 +1,3 @@
-// UI styled using Tailwind CSS
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from '../services/api';
@@ -37,6 +36,16 @@ function Dashboard() {
       toast.success('Project created');
     } catch {
       toast.error('Error creating project');
+    }
+  };
+
+  const handleDeleteProject = async (projectId) => {
+    try {
+      await api.delete(`/projects/${projectId}`);
+      toast.success('Project deleted');
+      fetchProjects();
+    } catch {
+      toast.error('Error deleting project');
     }
   };
 
@@ -79,12 +88,21 @@ function Dashboard() {
             projects.map((project) => (
               <div
                 key={project._id}
-                onClick={() => navigate(`/projects/${project._id}`)}
-                className="p-5 border rounded-lg cursor-pointer hover:shadow-md hover:bg-gray-50 transition"
+                className="p-5 border rounded-lg flex justify-between items-center hover:shadow-md transition"
               >
-                <h3 className="text-lg font-medium">
+                <h3
+                  className="text-lg font-medium cursor-pointer"
+                  onClick={() => navigate(`/projects/${project._id}`)}
+                >
                   {project.name}
                 </h3>
+
+                <button
+                  onClick={() => handleDeleteProject(project._id)}
+                  className="px-4 py-1 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                >
+                  Delete
+                </button>
               </div>
             ))
           )}
