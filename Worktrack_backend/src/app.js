@@ -10,8 +10,9 @@ app.use(
   cors({
     origin: [
       'http://localhost:5173',
-      'work-track-application.vercel.app'
+      'https://work-track-application.vercel.app'
     ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   })
 );
