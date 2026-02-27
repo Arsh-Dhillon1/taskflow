@@ -2,6 +2,8 @@
 WorkTrack is a full-stack Task Management System built using the MERN stack. 
 It allows authenticated users to create projects and manage tasks efficiently.
 
+🔗 Live Demo: https://work-track-application.vercel.app/
+
 ## Architecture Overview
 
 The application follows a client-server architecture.
